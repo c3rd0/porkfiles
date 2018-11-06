@@ -1,0 +1,55 @@
+﻿SSH Enable-setup
+
+CentOS 7 provides,opensshopenssh-server and openssh-clients packages. 
+
+The openssh package requires openssl-libs to be installed on the system since it provides some very important cryptographic libraries.
+
+Install packages manually
+
+	command:
+		# yum install openssh openssh-server openssh-clients openssl-libs
+
+The default configuration file for the sshd daemon is /etc/ssh/sshd_config.
+
+*- Change the listening port number. 
+
+	By default, the SSH daemon listens on port 22 and for security reasons you can change the number to something else. 
+		
+		Change the line:
+
+		Port:22  ( change 22 to desire port number)
+	Also change the ListenAddress to current ip address			
+
+		ListenAddress 192.168.1.1
+
+	Add rule to Semanage
+
+		$ semanage port -a -t ssh_port_t -p tcp #PORTNUMBER
+
+		note: is semanage not installed, use:
+			$ yum install policycoreutils-python
+	
+	Add rule to firewall
+		$firewall-cmd --zone=public --add-port=80/tcp
+		$firewall-cmd --zone=public --add-port=80/tcp –permanent
+			verify changes
+		$ sudo firewall-cmd --zone=public --status (cheks firewall public zone) 
+		$ sudo firewall-cmd --zone=public --list-services
+		
+		$ sudo firewall-cmd --reload
+
+Restart ssh service.
+
+# systemctl restart sshd.service
+
+we are ready to connect   to our server using ssh.
+
+
+SSH diagnostic tools or commands
+
+   1 )  ~]$ ps ax |grep -i 
+   2 )  -]$ sudo journalctl -u sshd
+
+
+
+

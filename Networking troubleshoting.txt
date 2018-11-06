@@ -1,0 +1,20 @@
+﻿Networking troubleshoting.
+
+Things to check.
+
+	*- ipconfiguration
+		ifconfig and or IP
+	
+	*- network driver
+		lsmod: to check if the network driver is loaded.
+		Check relevant files  /proc/interrupts  and  /sys/class/net
+
+	*-  check connectivity.
+		Ping. To se if network is visible
+		traceroute. can follow packets
+		mtr. Will do the same in a continuous fashion.    	
+
+	*- default gateway and routing configuration.
+		Route -n  to check routing tables.
+	*- host name reosolution.
+		Run dig  or  host  on a URL and see if DNS is working properly. 

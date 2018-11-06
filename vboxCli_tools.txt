@@ -1,0 +1,6 @@
+﻿Vbox Command Management from CLI.
+
+	List vms
+		$vboxManage list vms
+	view running vms
+		$ vboxManage  list -l runningvms

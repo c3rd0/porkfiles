@@ -1,0 +1,12 @@
+﻿Boot process failures.
+
+Kernel loads, but fails to mount the root filesystem.
+	Main causes here are:
+    1. misconfigured GRUB  configuration file
+    2. misconfigured /etc/fstab 
+    3. no support for the root filesistem type either built into the kernel or as a module in the initramfs  initial ram disk or filesystem.
+
+Failure during the init process.
+
+    • Check the messages that are displayed before things stop. Look out for corrupted filesystems, erros in startup scripts, etc.
+    • boot in to a lower boot runlevel such as 3 (no graphics) or 1 (single user  mode)
